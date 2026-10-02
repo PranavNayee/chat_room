@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Login / register -->
+  <main id="auth-screen" class="auth" hidden>
+    <div class="auth-card">
+      <h1>Chat</h1>
+      <div class="tabs" role="tablist">
+        <button id="tab-login" class="tab active" type="button" role="tab">Log in</button>
+        <button id="tab-register" class="tab" type="button" role="tab">Sign up</button>
+      </div>
+      <form id="auth-form" autocomplete="on">
+        <label for="auth-username">Username</label>
+        <input id="auth-username" name="username" type="text" autocomplete="username"
+               minlength="3" maxlength="24" pattern="[A-Za-z0-9_\-]+" required>
+        <label for="auth-password">Password</label>
+        <input id="auth-password" name="password" type="password" autocomplete="current-password"
+               minlength="8" maxlength="128" required>
+        <p id="auth-hint" class="hint" hidden>3&ndash;24 letters, digits, _ or &minus;. Password: at least 8 characters.</p>
+        <p id="auth-error" class="error" role="alert" hidden></p>
+        <button id="auth-submit" type="submit" class="primary">Log in</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Chat -->
+  <div id="chat-screen" class="chat" hidden>
+    <aside id="sidebar" class="sidebar">
+      <div class="me">
+        <div><span id="me-dot" class="dot"></span> <strong id="me-name"></strong></div>
+        <button id="logout-btn" type="button" class="link">Log out</button>
+      </div>
+      <div id="status" class="status">Connecting&hellip;</div>
+      <h2>Rooms</h2>
+      <ul id="room-list" class="conv-list"></ul>
+      <h2>People</h2>
+      <input id="user-filter" type="search" placeholder="Search people" aria-label="Search people" maxlength="24">
+      <ul id="user-list" class="conv-list"></ul>
+    </aside>
+
+    <section class="main">
+      <header class="main-head">
+        <button id="menu-btn" type="button" class="icon" aria-label="Show conversations">&#9776;</button>
+        <div>
+          <div id="conv-title" class="title"></div>
+          <div id="conv-sub" class="sub"></div>
+        </div>
+      </header>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="typing" class="typing"></div>
+      <form id="msg-form" class="composer" autocomplete="off">
+        <input id="msg-input" type="text" maxlength="400" placeholder="Type a message" aria-label="Message" autocomplete="off">
+        <button type="submit" class="primary">Send</button>
+      </form>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>

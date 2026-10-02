@@ -1,0 +1,6 @@
+.git
+build
+chat_server
+data
+tests
+*.md

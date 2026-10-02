@@ -1,0 +1,13 @@
+# Render Blueprint. Persistent disks need a paid instance type (the free tier has none,
+# so accounts/messages would be wiped on every restart or idle spin-down).
+services:
+  - type: web
+    name: secure-chat
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    autoDeploy: true
+    disk:
+      name: chat-data
+      mountPath: /var/data
+      sizeGB: 1
